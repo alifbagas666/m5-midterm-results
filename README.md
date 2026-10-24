@@ -1,6 +1,6 @@
 # M5 hierarchical forecasting: blending the winner with zero-shot foundation models
 
-Master's project (Yuan Ze University, Industrial Engineering and Management). We take the M5 winner's
+Artificial Intellegence Course Final Project. We take the M5 winner's
 six-set LightGBM forecasts and blend in 20 percent of a zero-shot foundation-model forecast
 (Chronos-2, direct, with weekday, event and SNAP covariates) at the 154 aggregate series (levels 1 to 9).
 Item levels (10 to 12) stay with the winner.
