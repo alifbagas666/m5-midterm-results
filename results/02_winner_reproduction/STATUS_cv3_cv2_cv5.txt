@@ -1,0 +1,14 @@
+[2026-10-14 20:48:55] cv3: free disk 685 GB (need 55)
+[2026-10-14 20:48:55] cv3: start (six sets, about 11 hours)
+[2026-10-15 07:47:53] cv3: finished with exit code 0 after 11.0 h
+[2026-10-15 07:47:53] cv3: result files copied to C:\A1_extra\send
+[2026-10-15 07:47:53] zip written: C:\A1_extra\send_pc3_windows.zip
+[2026-10-15 07:47:53] cv2: free disk 650 GB (need 55)
+[2026-10-15 07:47:53] cv2: start (six sets, about 11 hours)
+[2026-10-15 18:46:18] cv2: finished with exit code 0 after 11.0 h
+[2026-10-15 18:46:18] cv2: result files copied to C:\A1_extra\send
+[2026-10-15 18:46:18] zip written: C:\A1_extra\send_pc3_windows.zip
+[2026-10-15 18:46:18] cv5: free disk 615 GB (need 55)
+[2026-10-15 18:46:18] cv5: start (six sets, about 11 hours)
+[2026-10-16 05:33:25] cv5: finished with exit code 0 after 10.8 h
+[2026-10-16 05:33:25] cv5: result files copied to C:\A1_extra\send

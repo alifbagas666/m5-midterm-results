@@ -1,0 +1,63 @@
+EXPLORATORY: direct Chronos-2 at the item-level aggregates (level 10 item, level 11 item x state)
+Fixed rule: share 0.20 of the direct forecast, same model and settings as levels 1 to 9. Level 12 stays as the winner.
+WRMSSE over 12 levels, lower is better. Bootstrap: 2000 draws, blocks of 7 days (days only, rough guide).
+Decision uses the five windows before the final one; the final window is shown once and is exploratory.
+
+WINDOW cv5 (forecast d_1802..d_1829)
+Variant                        WRMSSE  vs winner  vs HEADLINE    95% interval vs HEADLINE  P(better)
+winner alone                   0.6730    +0.0000      +0.0185
+HEADLINE levels 1-9            0.6545    -0.0185      +0.0000
+HEADLINE + level 10            0.6525    -0.0205      -0.0020          [-0.0022, -0.0017]       1.00
+HEADLINE + levels 10, 11       0.6511    -0.0219      -0.0034          [-0.0038, -0.0029]       1.00
+  Levels 10 / 11 (WRMSSE): winner 0.8531 / 0.8418 | direct alone 0.8225 / 0.8284 | blend 0.8296 / 0.8247
+
+WINDOW cv2 (forecast d_1830..d_1857)
+Variant                        WRMSSE  vs winner  vs HEADLINE    95% interval vs HEADLINE  P(better)
+winner alone                   0.6477    +0.0000      +0.0098
+HEADLINE levels 1-9            0.6379    -0.0098      +0.0000
+HEADLINE + level 10            0.6368    -0.0109      -0.0011          [-0.0014, -0.0009]       1.00
+HEADLINE + levels 10, 11       0.6361    -0.0116      -0.0018          [-0.0022, -0.0015]       1.00
+  Levels 10 / 11 (WRMSSE): winner 0.9090 / 0.8943 | direct alone 0.9173 / 0.9073 | blend 0.8954 / 0.8860
+
+WINDOW cv3 (forecast d_1858..d_1885)
+Variant                        WRMSSE  vs winner  vs HEADLINE    95% interval vs HEADLINE  P(better)
+winner alone                   0.6562    +0.0000      +0.0272
+HEADLINE levels 1-9            0.6291    -0.0272      +0.0000
+HEADLINE + level 10            0.6280    -0.0283      -0.0011          [-0.0015, -0.0004]       1.00
+HEADLINE + levels 10, 11       0.6273    -0.0289      -0.0018          [-0.0024, -0.0007]       1.00
+  Levels 10 / 11 (WRMSSE): winner 0.8638 / 0.8575 | direct alone 0.8748 / 0.8736 | blend 0.8507 / 0.8496
+
+WINDOW cv4 (forecast d_1886..d_1913)
+Variant                        WRMSSE  vs winner  vs HEADLINE    95% interval vs HEADLINE  P(better)
+winner alone                   0.5167    +0.0000      +0.0016
+HEADLINE levels 1-9            0.5151    -0.0016      +0.0000
+HEADLINE + level 10            0.5146    -0.0022      -0.0006          [-0.0007, -0.0004]       1.00
+HEADLINE + levels 10, 11       0.5142    -0.0026      -0.0010          [-0.0012, -0.0007]       1.00
+  Levels 10 / 11 (WRMSSE): winner 0.8061 / 0.8228 | direct alone 0.8385 / 0.8469 | blend 0.7993 / 0.8182
+
+WINDOW public (forecast d_1914..d_1941)
+Variant                        WRMSSE  vs winner  vs HEADLINE    95% interval vs HEADLINE  P(better)
+winner alone                   0.6415    +0.0000      +0.0169
+HEADLINE levels 1-9            0.6245    -0.0169      +0.0000
+HEADLINE + level 10            0.6234    -0.0181      -0.0011          [-0.0014, -0.0008]       1.00
+HEADLINE + levels 10, 11       0.6228    -0.0186      -0.0017          [-0.0022, -0.0013]       1.00
+  Levels 10 / 11 (WRMSSE): winner 0.8230 / 0.8261 | direct alone 0.8268 / 0.8455 | blend 0.8096 / 0.8191
+
+WINDOW final (forecast d_1942..d_1969)   [exploratory, scored once]
+Variant                        WRMSSE  vs winner  vs HEADLINE    95% interval vs HEADLINE  P(better)
+winner alone                   0.5228    +0.0000      +0.0033
+HEADLINE levels 1-9            0.5195    -0.0033      +0.0000
+HEADLINE + level 10            0.5192    -0.0036      -0.0003          [-0.0006, -0.0001]       1.00
+HEADLINE + levels 10, 11       0.5190    -0.0038      -0.0005          [-0.0008, -0.0002]       1.00
+  Levels 10 / 11 (WRMSSE): winner 0.9653 / 0.9287 | direct alone 1.0105 / 0.9629 | blend 0.9617 / 0.9264
+
+SUMMARY (change = extended variant minus HEADLINE, negative is better)
+  five windows before final: cv5, cv2, cv3, cv4, public
+    HEADLINE + level 10          mean change -0.0012 | improved 5 of 5 | sign test p = 0.062 | worst -0.0006
+    HEADLINE + levels 10, 11     mean change -0.0019 | improved 5 of 5 | sign test p = 0.062 | worst -0.0010
+  all windows with results: cv5, cv2, cv3, cv4, public, final
+    HEADLINE + level 10          mean change -0.0010 | improved 6 of 6 | sign test p = 0.031 | worst -0.0003
+    HEADLINE + levels 10, 11     mean change -0.0017 | improved 6 of 6 | sign test p = 0.031 | worst -0.0005
+
+Notes: windows share training history; intervals resample days only; this is exploratory and was run after
+the main result was fixed. If the five-window result is not clearly better, the headline stays unchanged.

@@ -1,0 +1,39 @@
+PATCHTST ON M5 (global model trained on M5)
+Data folder: m5_data
+Device: cuda: NVIDIA GeForce RTX 3090 | steps per model: 12000 | seed: 0
+Settings (fixed in advance, not tuned on the holdout): context=224, patch_len=16, stride=8, d_model=128, heads=8, ff=256, layers=3, dropout=0.1, head_hidden=512, lr=0.0005, wd=0.01, batch=512, train_span=1100
+Training window: d_1 to d_1941 | Holdout (28 days): d_1942 to d_1969
+Validation models are trained separately on data up to d_1913 and forecast d_1914 to d_1941.
+
+LADDER (WRMSSE, lower is better)
+Config                 Holdout  Validation    Min
+P0_univariate           0.7721      0.8962    8.0
+P1_covariates           0.6613      0.7588    8.4
+
+TRAINING CURVES (step:smoothed loss, holdout model)
+  P0_univariate: 1200:15.6879, 2400:22.3370, 3600:13.4789, 4800:20.6656, 6000:16.9809, 7200:18.5904, 8400:18.3979, 9600:15.6432, 10800:16.1868, 12000:17.2715
+  P1_covariates: 1200:15.6768, 2400:22.3563, 3600:13.4827, 4800:20.6997, 6000:16.9654, 7200:18.5494, 8400:18.3755, 9600:15.6083, 10800:16.1846, 12000:17.2457
+
+WRMSSE BY LEVEL (holdout)
+Level Name                    Series   SeasonalNaive   P0_univariate   P1_covariates
+------------------------------------------------------------------------------------
+1     Total                        1          0.5600          0.6194          0.3752
+2     State                        3          0.6731          0.6636          0.4630
+3     Store                       10          0.7176          0.7000          0.5852
+4     Category                     3          0.6230          0.6485          0.4477
+5     Department                   7          0.7082          0.7430          0.5795
+6     State x Category             9          0.7600          0.7110          0.5583
+7     State x Department          21          0.8292          0.7821          0.6671
+8     Store x Category            30          0.8008          0.7397          0.6538
+9     Store x Department          70          0.8881          0.8089          0.7448
+10    Item                      3049          1.2233          1.0054          1.0091
+11    Item x State              9147          1.2045          0.9508          0.9549
+12    Item x Store             30490          1.1764          0.8934          0.8973
+------------------------------------------------------------------------------------
+      OVERALL WRMSSE           42840          0.8470          0.7721          0.6613
+
+REFERENCE VALUES (published, window to be confirmed)
+  Original M5 winner: 0.520 | Yang et al. Top-1 reproduction: 0.5230 | Yang et al. LightGBM + PatchTST: 0.4989
+  Our E1b L3 (LightGBM, unweighted, all features): 0.5422
+
+Runtime: 17.2 min

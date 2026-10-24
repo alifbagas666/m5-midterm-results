@@ -1,0 +1,9 @@
+[2026-10-17 12:30:11] model t0, series 30490, days 1969, calendar days 1969
+model loaded in 1.6 min
+  cv5 (origin d_1801) done in 0.3 min | saved as fm_t0_cv5.npy | level 1 forecast total / previous 28 days actual 1.037
+  cv2 (origin d_1829) done in 0.3 min | saved as fm_t0_cv2.npy | level 1 forecast total / previous 28 days actual 1.029
+  cv3 (origin d_1857) done in 0.3 min | saved as fm_t0_cv3.npy | level 1 forecast total / previous 28 days actual 0.979
+  cv4 (origin d_1885) done in 0.3 min | saved as fm_t0_cv4.npy | level 1 forecast total / previous 28 days actual 1.020
+  public (origin d_1913) done in 0.3 min | saved as fm_t0_public.npy | level 1 forecast total / previous 28 days actual 1.002
+  final (origin d_1941) done in 0.3 min | saved as fm_t0_final.npy | level 1 forecast total / previous 28 days actual 1.031
+done

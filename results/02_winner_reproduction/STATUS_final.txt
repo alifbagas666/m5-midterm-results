@@ -1,0 +1,115 @@
+﻿PC3 STATUS - M5 winner (A1) lean package
+Last updated: 2026-10-09 04:32 (ALL 6 SETS FINISHED - see SUMMARY at the end)
+
+SETUP
+  Package: A1_lean_pkg.zip (51,339 bytes, 2026-10-08 16:43) from the project folder, unzipped into C:\A1_lean
+           (zip has a top folder A1_lean_pkg\; its contents were copied up to C:\A1_lean so run_winner_a1.py runs from there;
+            the extracted A1_lean_pkg\ folder is kept as is)
+  Data copied (not moved) from <project>\m5_data to C:\A1_lean\m5_data:
+  calendar.csv                       112,477 bytes
+  sales_test_evaluation.csv        3,260,569 bytes
+  sales_train_evaluation.csv     121,168,898 bytes
+  sample_submission.csv            5,228,786 bytes
+  sell_prices.csv                237,073,689 bytes
+  sales_train_evaluation.csv: 1946 columns, last day column d_1941 (as expected); no 'id' column (organiser layout, lean package handles this)
+  sales_test_evaluation.csv: d_1942 .. d_1969
+
+MACHINE
+  CPU: 13th Gen Intel Core i7-13700, 16 cores / 24 logical processors
+  RAM: 31.7 GB total, 19.5 GB free at setup
+  Disk C: 733 GB free (need 40 GB) - OK
+
+PYTHON
+  Base: C:\ProgramData\anaconda3\python.exe (Anaconda base env untouched)
+  venv: C:\A1_lean\venv  -> Python 3.13.9 (Anaconda build)
+  Installed in venv with pip: pandas 3.0.6, numpy 2.5.3, scipy 1.18.1, lightgbm 4.7.0, psutil 7.2.2,
+                              scikit-learn 1.9.1, tqdm 4.70.1
+  Fixes applied to package code: none
+
+MONITORING
+  C:\A1_lean\monitor_a1.py samples every 30 s the memory of the whole process tree of the run
+  (cmd -> venv launcher -> interpreter -> step scripts), free RAM and the current step; log in run_logs\monitor_<set>.txt.
+  If free RAM stays under 1 GB for 5 minutes it stops only that process tree and writes why.
+
+RUNS
+  nr_store: started 2026-10-08 16:49:41, root pid 24696 (cmd wrapper), monitor pid 26512
+    check 16:54: elapsed 5.0 min | tree RSS 4.80 GB | peak 5.15 GB | free RAM 15.96 GB | preprocessing (lags/rollings done, encoding)
+    check 17:00: elapsed    10.5 min | tree RSS   1.89 GB | peak   5.15 GB | free RAM  19.21 GB | nr_store: train (2-1. nonrecursive_store_TRAIN.py) ... || latest step log nr_store_train.log: [1900]	training's rmse: 2.00757	valid_0's rmse: 3.27147
+    preprocessing finished 16:55:35 (about 5.9 min, peak tree RSS 5.15 GB); nr_store train started, store CA_1 at iteration 1900/3000 at 17:00 -> roughly 7 min per store model, 10 stores
+    check 17:08: elapsed    18.5 min | tree RSS   1.84 GB | peak   5.15 GB | free RAM  19.66 GB | nr_store: train (2-1. nonrecursive_store_TRAIN.py) ... || latest step log nr_store_train.log: [2900]	training's rmse: 1.61304	valid_0's rmse: 3.0232
+    check 17:23: elapsed    34.0 min | tree RSS   1.91 GB | peak   5.15 GB | free RAM  19.65 GB | nr_store: train (2-1. nonrecursive_store_TRAIN.py) ... || latest step log nr_store_train.log: [600]	training's rmse: 1.84637	valid_0's rmse: 2.75406
+    check 17:44: elapsed    54.0 min | tree RSS   1.92 GB | peak   5.15 GB | free RAM  19.40 GB | nr_store: train (2-1. nonrecursive_store_TRAIN.py) ... || latest step log nr_store_train.log: [500]	training's rmse: 1.64144	valid_0's rmse: 2.38218
+    check 18:04: elapsed    74.0 min | tree RSS   1.95 GB | peak   5.15 GB | free RAM  19.46 GB | nr_store: train (2-1. nonrecursive_store_TRAIN.py) ... || latest step log nr_store_predict.log: CA_1 start
+    nr_store train finished in 68.3 min (exit 0); predict started
+    check 18:09: 2026-10-08 18:07:43 elapsed 78.0 min | PEAK tree RSS 5.15 GB || latest step log nr_store_predict.log: WI_3 start
+  nr_store: FINISHED 2026-10-08 18:09 (driver exit OK)
+    preprocessing 5.9 min | nr_store train 68.3 min (10 models, ~6.8 min each) | nr_store predict 3.5 min | total 77.8 min
+    peak memory of the run (whole process tree, peak during preprocessing): 5.15 GB; free RAM never below ~15 GB
+    SCORE (results_winner_A1.txt): nr_store WRMSSE 0.5282, bias 0.987 (seasonal naive 0.8470; published winner 0.520)
+    Fixes needed: none
+
+  ESTIMATE for the remaining sets (ESTIMATE, extrapolated from nr_store only; settings read from the train scripts):
+    nr_store_cat  : 30 models, same tree settings (255 leaves, 3000 trees), each on ~1/3 of a store's rows
+                    -> train ~70-110 min, predict ~5 min                                          ESTIMATE
+    nr_store_dept : 70 models, same settings, each on ~1/7 of a store's rows
+                    -> train ~80-150 min, predict ~8 min                                          ESTIMATE
+    r_store       : 10 models, 2047 leaves (8x nr_store) -> train ~2-4 h; recursive day-by-day predict ~0.5-1.5 h  ESTIMATE
+    r_store_cat   : 30 models, 255 leaves -> train ~70-110 min; recursive predict ~0.5-1.5 h     ESTIMATE
+    r_store_dept  : 70 models, 255 leaves -> train ~80-150 min; recursive predict ~0.5-1.5 h     ESTIMATE
+    Total remaining: roughly 10-17 hours                                                          ESTIMATE
+  Note: "nr_store_cat and nr_store_dept together" is run as ONE driver call (--sets nr_store_cat,nr_store_dept), which
+        does them one after the other; two parallel runs on the same work folder were judged too risky for RAM.
+  nr_store_cat_dept (--sets nr_store_cat,nr_store_dept): started 2026-10-08 18:09:57, root pid 1956 (cmd wrapper, rc 0), monitor pid 28076; driver log run_logs\driver_nr_store_cat_dept.txt
+    check 18:30: elapsed    20.0 min | tree RSS   0.97 GB | peak   2.42 GB | free RAM  20.25 GB | nr_store_cat: train (2-2. nonrecursive_store_cat_TRAIN.py) ... || latest step log nr_store_cat_train.log: [2600]	training's rmse: 1.70758	valid_0's rmse: 3.17651
+    check 19:00: elapsed    50.0 min | tree RSS   0.75 GB | peak   4.06 GB | free RAM  20.91 GB | nr_store_cat: train (2-2. nonrecursive_store_cat_TRAIN.py) ... || latest step log nr_store_cat_train.log: [3000]	training's rmse: 0.935562	valid_0's rmse: 1.58323
+    check 19:35: elapsed    85.0 min | tree RSS   1.93 GB | peak   4.20 GB | free RAM  19.25 GB | nr_store_cat: predict (2-2. nonrecursive_store_cat_PREDICT.py) ... || latest step log nr_store_cat_predict.log: WI_3 HOUSEHOLD start
+    nr_store_cat train finished in 80.7 min (exit 0, 30 models ~2.7 min each); predict running at 19:35
+    check 20:05: elapsed   115.5 min | tree RSS   0.69 GB | peak   4.20 GB | free RAM  20.92 GB | nr_store_dept: train (2-3. nonrecursive_store_dept_TRAIN.py) ... || latest step log nr_store_dept_train.log: [1800]	training's rmse: 1.3557	valid_0's rmse: 1.6624
+    nr_store_cat predict finished in 4.9 min (exit 0) -> nr_store_cat FINISHED ~19:40 (score comes when this driver call ends); nr_store_dept train started ~19:40, ~1.2 min per model
+    check 20:45: elapsed   155.6 min | tree RSS   0.56 GB | peak   4.20 GB | free RAM  20.97 GB | nr_store_dept: train (2-3. nonrecursive_store_dept_TRAIN.py) ... || latest step log nr_store_dept_train.log: WI_1 HOUSEHOLD_1 start
+    check 21:15: elapsed   185.6 min | tree RSS   1.00 GB | peak   4.20 GB | free RAM  20.52 GB | nr_store_dept: predict (2-3. nonrecursive_store_dept_PREDICT.py) ... || latest step log nr_store_dept_predict.log: CA_3 FOODS_3 start
+    nr_store_dept train finished in 97.6 min (exit 0, 70 models ~1.4 min each); predict running at 21:15
+    check 21:26: 2026-10-08 21:22:32 elapsed 192.6 min | PEAK tree RSS 4.20 GB || latest step log nr_store_dept_predict.log: WI_3 FOODS_3 start
+  nr_store_cat + nr_store_dept: FINISHED 2026-10-08 21:26 (driver exit OK, total 192.4 min)
+    nr_store_cat  train 80.7 min | predict 4.9 min   -> WRMSSE 0.5535, bias 0.973
+    nr_store_dept train 97.6 min | predict 9.0 min   -> WRMSSE 0.6064, bias 0.952
+    equal-weight average of the 3 finished sets      -> WRMSSE 0.5525, bias 0.970
+    peak memory of the run (whole process tree): 4.20 GB; free RAM never below ~16.9 GB. Fixes needed: none
+  Updated ESTIMATE for the recursive sets (ESTIMATE): r_store ~2.5-5.5 h, r_store_cat ~1.7-3 h, r_store_dept ~2-4 h
+  r_store (--sets r_store): started 2026-10-08 21:26:19, root pid 9656 (cmd wrapper, rc 0), monitor pid 27204; driver log run_logs\driver_r_store.txt
+    check 21:41: elapsed    15.0 min | tree RSS   2.15 GB | peak   3.07 GB | free RAM  19.36 GB | r_store: train (1-1. recursive_store_TRAIN.py) ... || latest step log r_store_train.log: [100]	valid_0's rmse: 2.11441
+    r_store: CA_1 trained in ~13 min (21:27-21:40) -> train ESTIMATE ~2.2 h for 10 stores; peak 3.07 GB so far
+    check 22:21: elapsed    55.0 min | tree RSS   2.36 GB | peak   3.07 GB | free RAM  19.11 GB | r_store: train (1-1. recursive_store_TRAIN.py) ... || latest step log r_store_train.log: [100]	valid_0's rmse: 1.78794
+    check 23:06: elapsed   100.1 min | tree RSS   2.41 GB | peak   3.07 GB | free RAM  19.90 GB | r_store: train (1-1. recursive_store_TRAIN.py) ... || latest step log r_store_train.log: [1100]	valid_0's rmse: 1.55692
+    check 23:46: elapsed   140.6 min | tree RSS   1.72 GB | peak   3.07 GB | free RAM  20.53 GB | r_store: predict (1-1. recursive_store_PREDICT.py) ... || latest step log r_store_predict.log: Predict | Day: 5
+    r_store train finished in 136.7 min (exit 0); recursive predict running, ~0.87 min per forecast day -> ~25 min ESTIMATE
+    check 00:12: 2026-10-09 00:07:54 elapsed 161.6 min | PEAK tree RSS 3.07 GB || latest step log r_store_predict.log: ##########  0.87 min round |  24.40 min total |  49994.63 day sales |
+  r_store: FINISHED 2026-10-09 00:08 (driver exit OK, total 161.4 min)
+    r_store train 136.7 min (10 models, ~13.7 min each) | predict 24.6 min (recursive, 28 days) -> WRMSSE 0.6835, bias 1.066
+    equal-weight average of the 4 finished sets -> WRMSSE 0.5168, bias 0.994
+    peak memory of the run (whole process tree): 3.07 GB; free RAM never below ~18 GB. Fixes needed: none
+  Updated ESTIMATE: r_store_cat ~1.5-2 h, r_store_dept ~2-2.5 h (train like nr_*_cat/dept + ~25-40 min recursive predict)   ESTIMATE
+  r_store_cat (--sets r_store_cat): started 2026-10-09 00:12:21, root pid 13404 (cmd wrapper, rc 0), monitor pid 21500; driver log run_logs\driver_r_store_cat.txt
+    check 00:52: elapsed    40.0 min | tree RSS   1.07 GB | peak   4.48 GB | free RAM  21.14 GB | r_store_cat: train (1-2. recursive_store_cat_TRAIN.py) ... || latest step log r_store_cat_train.log: [400]	valid_0's rmse: 1.79677
+    check 01:35: elapsed    82.9 min | tree RSS   1.08 GB | peak   4.77 GB | free RAM  21.07 GB | r_store_cat: train (1-2. recursive_store_cat_TRAIN.py) ... || latest step log r_store_cat_train.log: [1300]	valid_0's rmse: 2.08643
+    check 02:05: elapsed   113.0 min | tree RSS   2.01 GB | peak   4.77 GB | free RAM  20.18 GB | r_store_cat: predict (1-2. recursive_store_cat_PREDICT.py) ... || latest step log r_store_cat_predict.log: ##########  0.99 min round |  27.77 min total |  47150.83 day sales |
+  r_store_cat: FINISHED 2026-10-09 02:05 (driver exit OK, total 113.4 min)
+    r_store_cat train 85.3 min (30 models) | predict 28.0 min (recursive) -> WRMSSE 0.5802, bias 1.029
+    equal-weight average of the 5 finished sets -> WRMSSE 0.5198, bias 1.001
+    peak memory of the run (whole process tree): 4.77 GB; free RAM never below ~16 GB. Fixes needed: none
+  ESTIMATE r_store_dept: train ~100 min (like nr_store_dept) + recursive predict ~30-40 min = ~2.2-2.5 h   ESTIMATE
+  r_store_dept (--sets r_store_dept): started 2026-10-09 02:06:55, root pid 15916 (cmd wrapper, rc 0), monitor pid 26140; driver log run_logs\driver_r_store_dept.txt
+    check 02:52: elapsed    45.0 min | tree RSS   0.68 GB | peak   4.06 GB | free RAM  21.46 GB | r_store_dept: train (1-3. recursive_store_dept_TRAIN.py) ... || latest step log r_store_dept_train.log: [200]	valid_0's rmse: 1.52464
+    check 03:52: elapsed   105.0 min | tree RSS   0.83 GB | peak   4.79 GB | free RAM  21.27 GB | r_store_dept: train (1-3. recursive_store_dept_TRAIN.py) ... || latest step log r_store_dept_train.log: [700]	valid_0's rmse: 2.48491
+    check 04:32: 2026-10-09 04:29:28 elapsed 142.6 min | PEAK tree RSS 4.79 GB || latest step log r_store_dept_predict.log: ##########  1.24 min round |  34.89 min total |  46354.37 day sales |
+  r_store_dept: FINISHED 2026-10-09 04:29 (driver exit OK, total 142.2 min)
+    r_store_dept train 106.9 min (70 models) | predict 35.1 min (recursive) -> r_store_dept       0.5526   1.011
+    equal-weight average of ALL 6 sets -> average            0.5228   1.003
+    peak memory of the run (whole process tree): 4.79 GB; free RAM never below ~16 GB. Fixes needed: none
+
+SUMMARY: ALL 6 SETS FINISHED (nr_store, nr_store_cat, nr_store_dept, r_store, r_store_cat, r_store_dept)
+  Measured times (train + predict): nr_store 68.3+3.5 | nr_store_cat 80.7+4.9 | nr_store_dept 97.6+9.0 |
+    r_store 136.7+24.6 | r_store_cat 85.3+28.0 | r_store_dept 106.9+35.1 min; preprocessing 5.9 min.
+    Total compute ~11.5 h (2026-10-08 16:49 -> 2026-10-09 04:29, including gaps between runs).
+  Highest peak memory of any run: 5.15 GB (preprocessing). No package code was changed; no compatibility fix was needed.
+  Last updated: 2026-10-09 04:32

@@ -1,0 +1,128 @@
+MULTI-WINDOW CHECK: winner (six-set LightGBM average) vs blend with direct Chronos-2 at levels 1 to 9
+Fixed rule: share 0.20, direct Chronos-2 with covariates, mean point, levels 1 to 9 only. Reconciled = same blend, then OLS reconciliation (secondary).
+WRMSSE over 12 levels, lower is better. Bootstrap per window: 2000 draws, blocks of 7 days (days only, rough guide). Days in data folder: 1941.
+
+WINDOW cv5 (forecast d_1802..d_1829) | sales growth vs previous 28 days +8.5% | winner bias 0.925
+Variant                      WRMSSE   Change    95% interval of change  P(better)
+winner alone                 0.6730  +0.0000        [+0.0000, +0.0000]
+blend (headline)             0.6545  -0.0185        [-0.0285, -0.0078]       1.00
+blend + OLS reconciled       0.6577  -0.0153        [-0.0241, -0.0061]       1.00
+blend share 0.10             0.6628  -0.0102        [-0.0153, -0.0048]       1.00
+blend share 0.30             0.6483  -0.0247        [-0.0396, -0.0087]       1.00
+  OLS solver relative residual (should be tiny): 1.0e-09
+  Level                      Winner    Blend  Reconciled
+   1 Total                   0.5700   0.5575      0.5522
+   2 State                   0.5876   0.5703      0.5728
+   3 Store                   0.6222   0.5886      0.6028
+   4 Category                0.5714   0.5487      0.5491
+   5 Department              0.6120   0.5871      0.5870
+   6 State x Category        0.5964   0.5710      0.5790
+   7 State x Department      0.6412   0.6184      0.6211
+   8 Store x Category        0.6505   0.6185      0.6288
+   9 Store x Department      0.6999   0.6688      0.6757
+  10 Item                    0.8531   0.8531      0.8524
+  11 Item x State            0.8418   0.8418      0.8416
+  12 Item x Store            0.8298   0.8298      0.8296
+
+WINDOW cv2 (forecast d_1830..d_1857) | sales growth vs previous 28 days +7.5% | winner bias 0.951
+Variant                      WRMSSE   Change    95% interval of change  P(better)
+winner alone                 0.6477  +0.0000        [+0.0000, +0.0000]
+blend (headline)             0.6379  -0.0098        [-0.0156, -0.0022]       0.99
+blend + OLS reconciled       0.6361  -0.0116        [-0.0169, -0.0047]       1.00
+blend share 0.10             0.6417  -0.0061        [-0.0092, -0.0020]       1.00
+blend share 0.30             0.6366  -0.0112        [-0.0195, -0.0004]       0.98
+  OLS solver relative residual (should be tiny): 9.3e-10
+  Level                      Winner    Blend  Reconciled
+   1 Total                   0.4973   0.4825      0.4865
+   2 State                   0.5182   0.5085      0.5041
+   3 Store                   0.5662   0.5588      0.5517
+   4 Category                0.5098   0.4964      0.4960
+   5 Department              0.5755   0.5511      0.5553
+   6 State x Category        0.5411   0.5324      0.5263
+   7 State x Department      0.6096   0.5991      0.5931
+   8 Store x Category        0.6042   0.5907      0.5888
+   9 Store x Department      0.6787   0.6632      0.6613
+  10 Item                    0.9090   0.9090      0.9080
+  11 Item x State            0.8943   0.8943      0.8938
+  12 Item x Store            0.8691   0.8691      0.8689
+
+WINDOW cv3 (forecast d_1858..d_1885) | sales growth vs previous 28 days +0.0% | winner bias 0.973
+Variant                      WRMSSE   Change    95% interval of change  P(better)
+winner alone                 0.6562  +0.0000        [+0.0000, +0.0000]
+blend (headline)             0.6291  -0.0272        [-0.0538, -0.0030]       1.00
+blend + OLS reconciled       0.6281  -0.0282        [-0.0569, -0.0036]       1.00
+blend share 0.10             0.6414  -0.0149        [-0.0287, -0.0024]       1.00
+blend share 0.30             0.6196  -0.0367        [-0.0751, -0.0020]       0.98
+  OLS solver relative residual (should be tiny): 9.9e-10
+  Level                      Winner    Blend  Reconciled
+   1 Total                   0.5189   0.4625      0.4664
+   2 State                   0.5628   0.5188      0.5199
+   3 Store                   0.6339   0.5982      0.5960
+   4 Category                0.5215   0.4803      0.4760
+   5 Department              0.5330   0.4938      0.4925
+   6 State x Category        0.5770   0.5445      0.5425
+   7 State x Department      0.6033   0.5747      0.5729
+   8 Store x Category        0.6634   0.6384      0.6362
+   9 Store x Department      0.6980   0.6745      0.6747
+  10 Item                    0.8638   0.8638      0.8618
+  11 Item x State            0.8575   0.8575      0.8566
+  12 Item x Store            0.8419   0.8419      0.8417
+
+WINDOW cv4 (forecast d_1886..d_1913) | sales growth vs previous 28 days +0.6% | winner bias 1.002
+Variant                      WRMSSE   Change    95% interval of change  P(better)
+winner alone                 0.5167  +0.0000        [+0.0000, +0.0000]
+blend (headline)             0.5151  -0.0016        [-0.0074, +0.0031]       0.72
+blend + OLS reconciled       0.5144  -0.0023        [-0.0079, +0.0024]       0.81
+blend share 0.10             0.5153  -0.0014        [-0.0043, +0.0009]       0.86
+blend share 0.30             0.5162  -0.0005        [-0.0090, +0.0063]       0.53
+  OLS solver relative residual (should be tiny): 9.9e-10
+  Level                      Winner    Blend  Reconciled
+   1 Total                   0.2320   0.2363      0.2370
+   2 State                   0.3286   0.3301      0.3304
+   3 Store                   0.4448   0.4359      0.4331
+   4 Category                0.3181   0.3205      0.3211
+   5 Department              0.4114   0.4102      0.4089
+   6 State x Category        0.4177   0.4158      0.4163
+   7 State x Department      0.4858   0.4882      0.4830
+   8 Store x Category        0.5254   0.5149      0.5150
+   9 Store x Department      0.5842   0.5766      0.5754
+  10 Item                    0.8061   0.8061      0.8062
+  11 Item x State            0.8228   0.8228      0.8229
+  12 Item x Store            0.8239   0.8239      0.8239
+
+WINDOW public (forecast d_1914..d_1941) | sales growth vs previous 28 days +4.1% | winner bias 0.933
+Variant                      WRMSSE   Change    95% interval of change  P(better)
+winner alone                 0.6415  +0.0000        [+0.0000, +0.0000]
+blend (headline)             0.6245  -0.0169        [-0.0280, -0.0085]       1.00
+blend + OLS reconciled       0.6229  -0.0186        [-0.0307, -0.0090]       1.00
+blend share 0.10             0.6321  -0.0094        [-0.0153, -0.0046]       1.00
+blend share 0.30             0.6189  -0.0225        [-0.0389, -0.0118]       1.00
+  OLS solver relative residual (should be tiny): 9.6e-10
+  Level                      Winner    Blend  Reconciled
+   1 Total                   0.5513   0.5118      0.5161
+   2 State                   0.5517   0.5211      0.5243
+   3 Store                   0.5845   0.5608      0.5614
+   4 Category                0.5521   0.5301      0.5188
+   5 Department              0.5654   0.5448      0.5397
+   6 State x Category        0.5664   0.5458      0.5417
+   7 State x Department      0.5907   0.5748      0.5728
+   8 Store x Category        0.6092   0.5919      0.5891
+   9 Store x Department      0.6513   0.6383      0.6370
+  10 Item                    0.8230   0.8230      0.8222
+  11 Item x State            0.8261   0.8261      0.8260
+  12 Item x Store            0.8260   0.8260      0.8260
+
+WINDOW final (d_1942..d_1969): skipped (data folder too short).
+
+SUMMARY ACROSS 5 WINDOWS (change = variant minus winner alone, negative is better)
+Window     Growth   Winner    Blend   Change  Reconciled   Change
+cv5          8.5%   0.6730   0.6545  -0.0185      0.6577  -0.0153
+cv2          7.5%   0.6477   0.6379  -0.0098      0.6361  -0.0116
+cv3          0.0%   0.6562   0.6291  -0.0272      0.6281  -0.0282
+cv4          0.6%   0.5167   0.5151  -0.0016      0.5144  -0.0023
+public       4.1%   0.6415   0.6245  -0.0169      0.6229  -0.0186
+  blend (headline): mean change -0.0148 | windows improved 5 of 5 | sign test p = 0.062 | 95% interval of the mean change [-0.0211, -0.0083] | worst window -0.0016
+  blend + OLS reconciled: mean change -0.0152 | windows improved 5 of 5 | sign test p = 0.062 | 95% interval of the mean change [-0.0215, -0.0087] | worst window -0.0023
+  Correlation between window sales growth and blend change: +0.04 (descriptive only)
+  Notes: windows do not overlap but share training history, so they are not fully independent. The interval resamples days only.
+  The rule was fixed before the final window was scored; reconciliation is a secondary, labelled variant.

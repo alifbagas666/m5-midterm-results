@@ -1,0 +1,11 @@
+[2026-10-17 12:34:00] model timestral, series 30490, days 1969, calendar days 1969
+model loaded in 1.4 min
+[2026-10-17 12:36:14] model timestral, series 30490, days 1969, calendar days 1969
+model loaded in 0.1 min
+  cv5 (origin d_1801) done in 0.3 min | saved as fm_timestral_cv5.npy | level 1 forecast total / previous 28 days actual 1.026
+  cv2 (origin d_1829) done in 0.3 min | saved as fm_timestral_cv2.npy | level 1 forecast total / previous 28 days actual 1.032
+  cv3 (origin d_1857) done in 0.4 min | saved as fm_timestral_cv3.npy | level 1 forecast total / previous 28 days actual 0.999
+  cv4 (origin d_1885) done in 0.4 min | saved as fm_timestral_cv4.npy | level 1 forecast total / previous 28 days actual 1.019
+  public (origin d_1913) done in 0.4 min | saved as fm_timestral_public.npy | level 1 forecast total / previous 28 days actual 1.005
+  final (origin d_1941) done in 0.4 min | saved as fm_timestral_final.npy | level 1 forecast total / previous 28 days actual 1.040
+done

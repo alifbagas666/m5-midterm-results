@@ -1,0 +1,40 @@
+1. preprocessing/1. preprocessing.py: directory from environment x1
+1. preprocessing/1. preprocessing.py: .dt.week -> isocalendar().week x1
+1. preprocessing/1. preprocessing.py: chained assignment (pandas 3) x1
+2. train/1-1. recursive_store_TRAIN.py: directory from environment x1
+2. train/1-1. recursive_store_TRAIN.py: KKK 0 -> 2 x1
+2. train/1-1. recursive_store_TRAIN.py: verbose_eval -> callbacks (LightGBM 4) x1
+2. train/1-1. recursive_store_TRAIN.py: writable copy (pandas 3) x1
+2. train/1-2. recursive_store_cat_TRAIN.py: directory from environment x1
+2. train/1-2. recursive_store_cat_TRAIN.py: KKK 0 -> 2 x1
+2. train/1-2. recursive_store_cat_TRAIN.py: verbose_eval -> callbacks (LightGBM 4) x1
+2. train/1-2. recursive_store_cat_TRAIN.py: writable copy (pandas 3) x1
+2. train/1-3. recursive_store_dept_TRAIN.py: directory from environment x1
+2. train/1-3. recursive_store_dept_TRAIN.py: KKK 0 -> 2 x1
+2. train/1-3. recursive_store_dept_TRAIN.py: verbose_eval -> callbacks (LightGBM 4) x1
+2. train/1-3. recursive_store_dept_TRAIN.py: writable copy (pandas 3) x1
+2. train/2-1. nonrecursive_store_TRAIN.py: directory from environment x1
+2. train/2-1. nonrecursive_store_TRAIN.py: cv private -> cv4 x1
+2. train/2-1. nonrecursive_store_TRAIN.py: verbose_eval -> callbacks (LightGBM 4) x1
+2. train/2-2. nonrecursive_store_cat_TRAIN.py: directory from environment x1
+2. train/2-2. nonrecursive_store_cat_TRAIN.py: cv private -> cv4 x1
+2. train/2-2. nonrecursive_store_cat_TRAIN.py: verbose_eval -> callbacks (LightGBM 4) x1
+2. train/2-3. nonrecursive_store_dept_TRAIN.py: directory from environment x1
+2. train/2-3. nonrecursive_store_dept_TRAIN.py: cv private -> cv4 x1
+2. train/2-3. nonrecursive_store_dept_TRAIN.py: verbose_eval -> callbacks (LightGBM 4) x1
+3. predict/1-1. recursive_store_PREDICT.py: directory from environment x1
+3. predict/1-1. recursive_store_PREDICT.py: KKK 0 -> 2 x1
+3. predict/1-1. recursive_store_PREDICT.py: chained assignment (pandas 3) x1
+3. predict/1-2. recursive_store_cat_PREDICT.py: directory from environment x1
+3. predict/1-2. recursive_store_cat_PREDICT.py: KKK 0 -> 2 x1
+3. predict/1-2. recursive_store_cat_PREDICT.py: chained assignment (pandas 3) x1
+3. predict/1-3. recursive_store_dept_PREDICT.py: directory from environment x1
+3. predict/1-3. recursive_store_dept_PREDICT.py: KKK 0 -> 2 x1
+3. predict/1-3. recursive_store_dept_PREDICT.py: chained assignment (pandas 3) x1
+3. predict/2-1. nonrecursive_store_PREDICT.py: directory from environment x1
+3. predict/2-1. nonrecursive_store_PREDICT.py: cv private -> cv4 x1
+3. predict/2-2. nonrecursive_store_cat_PREDICT.py: directory from environment x1
+3. predict/2-2. nonrecursive_store_cat_PREDICT.py: cv private -> cv4 x1
+3. predict/2-3. nonrecursive_store_dept_PREDICT.py: directory from environment x1
+3. predict/2-3. nonrecursive_store_dept_PREDICT.py: cv private -> cv4 x1
+3. predict/3-1. Final ensemble.py: directory from environment x1

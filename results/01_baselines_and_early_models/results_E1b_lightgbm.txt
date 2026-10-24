@@ -1,0 +1,65 @@
+E1b GLOBAL LIGHTGBM RESULTS (ablation ladder)
+Data folder: m5_data
+Training window: d_1 to d_1913 | Holdout (28 days): d_1914 to d_1941
+Training origins: 52 weekly steps | horizons sampled per series per origin: 6
+Training rows: 9,512,880 | total features available: 49
+Objective: tweedie (variance power 1.1). Early stopping on a validation origin before the holdout.
+Final model is L4, fixed in advance. L0 to L3 holdout scores are for ablation only.
+Bias = total forecast / total actual over the holdout (1.000 means unbiased overall).
+
+ABLATION LADDER (each step adds to the previous one)
+Step           Feats   WRMSSE   Change  BestIt  ValRMSE    Bias   Min
+L0_base           34   0.6141              187   2.0492   0.952   1.5
+L1_+price         38   0.5779  -0.0362     365   2.0394   0.961   2.1
+L2_+event         43   0.5597  -0.0183     327   2.0457   0.969   2.1
+L3_+context       49   0.5422  -0.0174     247   2.0390   0.972   2.5
+L4_+weights       49   0.5888  +0.0465     118   4.1440   0.973   1.4
+
+WRMSSE BY LEVEL
+Level Name                    Series   SeasonalNaive         L0_base        L4_final
+------------------------------------------------------------------------------------
+1     Total                        1          0.7514          0.4691          0.3813
+2     State                        3          0.7544          0.4870          0.4251
+3     Store                       10          0.7993          0.5541          0.5014
+4     Category                     3          0.7620          0.4841          0.4552
+5     Department                   7          0.8171          0.5381          0.5229
+6     State x Category             9          0.7830          0.5254          0.5072
+7     State x Department          21          0.8304          0.5777          0.5713
+8     Store x Category            30          0.8393          0.5997          0.5829
+9     Store x Department          70          0.8919          0.6601          0.6525
+10    Item                      3049          1.0322          0.8224          0.8165
+11    Item x State              9147          1.0750          0.8256          0.8229
+12    Item x Store             30490          1.1004          0.8264          0.8258
+------------------------------------------------------------------------------------
+      OVERALL WRMSSE           42840          0.8697          0.6141          0.5888
+
+REFERENCE VALUES (published, window to be confirmed)
+  Original M5 winner (hidden test window): 0.520
+  Yang et al. Kaggle Top-1 reproduction: 0.5230
+  Yang et al. LightGBM + PatchTST: 0.4989
+  E1 (previous script, full run): 0.6141
+  This run, E1b final (L4): 0.5888
+
+TOP FEATURES BY GAIN (final model)
+  meannz28                51.1%
+  mean28                  17.4%
+  mean14                  13.6%
+  sw_mean                  4.3%
+  mean7                    3.6%
+  mean112                  1.7%
+  mean56                   1.2%
+  lag364                   1.2%
+  ctx_item_ratio7_28       0.5%
+  ctx_group_dow            0.4%
+  std112                   0.4%
+  event1                   0.4%
+  days_since_sale          0.3%
+  ctx_item_mean28          0.3%
+  wday                     0.3%
+  price                    0.3%
+  price_mean365_ratio      0.3%
+  sw_lag1                  0.3%
+  last1                    0.2%
+  store                    0.2%
+
+Runtime: 10.0 min

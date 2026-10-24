@@ -1,0 +1,50 @@
+E1 GLOBAL LIGHTGBM RESULTS
+Data folder: m5_data
+Training window: d_1 to d_1913 | Holdout (28 days): d_1914 to d_1941
+Training origins: 52 weekly steps | horizons sampled per series per origin: 6
+Training rows: 9,512,880 | features: 34
+Objective: tweedie (variance power 1.1) | best iteration: 187 | validation RMSE: 2.0492
+Early stopping validation uses an origin whose targets lie before the holdout (no test leakage).
+
+WRMSSE BY LEVEL
+Level Name                    Series   SeasonalNaive     E1_LightGBM
+--------------------------------------------------------------------
+1     Total                        1          0.7514          0.4691
+2     State                        3          0.7544          0.4870
+3     Store                       10          0.7993          0.5541
+4     Category                     3          0.7620          0.4841
+5     Department                   7          0.8171          0.5381
+6     State x Category             9          0.7830          0.5254
+7     State x Department          21          0.8304          0.5777
+8     Store x Category            30          0.8393          0.5997
+9     Store x Department          70          0.8919          0.6601
+10    Item                      3049          1.0322          0.8224
+11    Item x State              9147          1.0750          0.8256
+12    Item x Store             30490          1.1004          0.8264
+--------------------------------------------------------------------
+      OVERALL WRMSSE           42840          0.8697          0.6141
+
+REFERENCE VALUES (published, window to be confirmed)
+  Original M5 winner (hidden test window): 0.520
+  Yang et al. Kaggle Top-1 reproduction: 0.5230
+  Yang et al. LightGBM + PatchTST: 0.4989
+  This run, E1 LightGBM: 0.6141
+
+TOP FEATURES BY GAIN
+  mean28                  68.2%
+  meannz28                 6.5%
+  mean14                   5.1%
+  mean112                  3.6%
+  std112                   3.2%
+  mean7                    2.8%
+  mean56                   2.3%
+  days_since_sale          1.0%
+  price                    0.9%
+  lag364                   0.8%
+  wday                     0.8%
+  month                    0.5%
+  price_ratio_origin       0.5%
+  sw_mean                  0.5%
+  dept                     0.4%
+
+Runtime: 1.8 min

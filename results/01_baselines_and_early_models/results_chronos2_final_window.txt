@@ -1,0 +1,38 @@
+CHRONOS-2 ON M5 (zero-shot ablation ladder)
+Data folder: m5_data
+Device: cuda: NVIDIA GeForce RTX 3090 | model: amazon/chronos-2
+Context length: 1024 days | cross-learning tasks per batch: about 100
+Training window: d_1 to d_1941 | Holdout (28 days): d_1942 to d_1969
+Point forecast: mean implied by the quantiles (primary, fixed in advance); median also reported.
+No training on M5 was done. Whether M5 or similar retail data was in the Chronos-2 pretraining corpus
+is not checked here and should be addressed in the limitations section.
+
+LADDER (WRMSSE, lower is better; validation window is d_1914 to d_1941)
+Config                        Holdout mean  Holdout median  Validation mean    Min
+A_univariate                        0.6525          1.7639           0.7501    3.8
+B_covariates                        0.6528          1.7277           0.6991   11.0
+C_crosslearn_store_dept             0.6320          1.8192           0.7104    7.0
+
+WRMSSE BY LEVEL (holdout, mean point)
+Level Name                    Series   SeasonalNaive    A_univariate    B_covariates C_cl_store_dept
+----------------------------------------------------------------------------------------------------
+1     Total                        1          0.5600          0.3875          0.3832          0.3678
+2     State                        3          0.6731          0.4819          0.4781          0.4404
+3     Store                       10          0.7176          0.5593          0.5607          0.5223
+4     Category                     3          0.6230          0.4497          0.4402          0.4345
+5     Department                   7          0.7082          0.5437          0.5254          0.5215
+6     State x Category             9          0.7600          0.5604          0.5581          0.5281
+7     State x Department          21          0.8292          0.6492          0.6406          0.6180
+8     Store x Category            30          0.8008          0.6298          0.6334          0.6034
+9     Store x Department          70          0.8881          0.7175          0.7162          0.6915
+10    Item                      3049          1.2233          0.9975          1.0171          1.0010
+11    Item x State              9147          1.2045          0.9516          0.9666          0.9526
+12    Item x Store             30490          1.1764          0.9014          0.9143          0.9026
+----------------------------------------------------------------------------------------------------
+      OVERALL WRMSSE           42840          0.8470          0.6525          0.6528          0.6320
+
+REFERENCE VALUES (published, window to be confirmed)
+  Original M5 winner: 0.520 | Yang et al. Top-1 reproduction: 0.5230 | Yang et al. LightGBM + PatchTST: 0.4989
+  Our E1b L3 (LightGBM, unweighted, all features): 0.5422
+
+Runtime: 22.9 min

@@ -1,0 +1,9 @@
+[2026-10-17 12:49:41] model timesfm3, series 30490, days 1969, calendar days 1969
+model loaded in 2.2 min
+  cv5 (origin d_1801) done in 0.4 min | saved as fm_timesfm3_cv5.npy | level 1 forecast total / previous 28 days actual 1.063
+  cv2 (origin d_1829) done in 0.4 min | saved as fm_timesfm3_cv2.npy | level 1 forecast total / previous 28 days actual 1.025
+  cv3 (origin d_1857) done in 0.4 min | saved as fm_timesfm3_cv3.npy | level 1 forecast total / previous 28 days actual 0.989
+  cv4 (origin d_1885) done in 0.4 min | saved as fm_timesfm3_cv4.npy | level 1 forecast total / previous 28 days actual 1.003
+  public (origin d_1913) done in 0.4 min | saved as fm_timesfm3_public.npy | level 1 forecast total / previous 28 days actual 0.980
+  final (origin d_1941) done in 0.4 min | saved as fm_timesfm3_final.npy | level 1 forecast total / previous 28 days actual 1.031
+done

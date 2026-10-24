@@ -1,0 +1,74 @@
+Series 30490, days 1969
+Loading amazon/chronos-2 cuda
+    cv5 level 10: 1500/3049 series, 0.1 min
+    cv5 level 10: 3000/3049 series, 0.3 min
+    cv5 level 10: 3049/3049 series, 0.3 min
+  forecast cv5 level 10 (origin d_1801) done in 0.3 min
+    cv5 level 11: 1500/9147 series, 0.1 min
+    cv5 level 11: 3000/9147 series, 0.3 min
+    cv5 level 11: 4500/9147 series, 0.4 min
+    cv5 level 11: 6000/9147 series, 0.5 min
+    cv5 level 11: 7500/9147 series, 0.7 min
+    cv5 level 11: 9000/9147 series, 0.8 min
+    cv5 level 11: 9147/9147 series, 0.8 min
+  forecast cv5 level 11 (origin d_1801) done in 0.8 min
+    cv2 level 10: 1500/3049 series, 0.1 min
+    cv2 level 10: 3000/3049 series, 0.3 min
+    cv2 level 10: 3049/3049 series, 0.3 min
+  forecast cv2 level 10 (origin d_1829) done in 0.3 min
+    cv2 level 11: 1500/9147 series, 0.1 min
+    cv2 level 11: 3000/9147 series, 0.3 min
+    cv2 level 11: 4500/9147 series, 0.4 min
+    cv2 level 11: 6000/9147 series, 0.5 min
+    cv2 level 11: 7500/9147 series, 0.7 min
+    cv2 level 11: 9000/9147 series, 0.8 min
+    cv2 level 11: 9147/9147 series, 0.8 min
+  forecast cv2 level 11 (origin d_1829) done in 0.8 min
+    cv3 level 10: 1500/3049 series, 0.1 min
+    cv3 level 10: 3000/3049 series, 0.3 min
+    cv3 level 10: 3049/3049 series, 0.3 min
+  forecast cv3 level 10 (origin d_1857) done in 0.3 min
+    cv3 level 11: 1500/9147 series, 0.1 min
+    cv3 level 11: 3000/9147 series, 0.3 min
+    cv3 level 11: 4500/9147 series, 0.4 min
+    cv3 level 11: 6000/9147 series, 0.5 min
+    cv3 level 11: 7500/9147 series, 0.7 min
+    cv3 level 11: 9000/9147 series, 0.8 min
+    cv3 level 11: 9147/9147 series, 0.8 min
+  forecast cv3 level 11 (origin d_1857) done in 0.8 min
+    cv4 level 10: 1500/3049 series, 0.1 min
+    cv4 level 10: 3000/3049 series, 0.3 min
+    cv4 level 10: 3049/3049 series, 0.3 min
+  forecast cv4 level 10 (origin d_1885) done in 0.3 min
+    cv4 level 11: 1500/9147 series, 0.1 min
+    cv4 level 11: 3000/9147 series, 0.3 min
+    cv4 level 11: 4500/9147 series, 0.4 min
+    cv4 level 11: 6000/9147 series, 0.6 min
+    cv4 level 11: 7500/9147 series, 0.7 min
+    cv4 level 11: 9000/9147 series, 0.8 min
+    cv4 level 11: 9147/9147 series, 0.8 min
+  forecast cv4 level 11 (origin d_1885) done in 0.8 min
+    public level 10: 1500/3049 series, 0.1 min
+    public level 10: 3000/3049 series, 0.3 min
+    public level 10: 3049/3049 series, 0.3 min
+  forecast public level 10 (origin d_1913) done in 0.3 min
+    public level 11: 1500/9147 series, 0.1 min
+    public level 11: 3000/9147 series, 0.3 min
+    public level 11: 4500/9147 series, 0.4 min
+    public level 11: 6000/9147 series, 0.6 min
+    public level 11: 7500/9147 series, 0.7 min
+    public level 11: 9000/9147 series, 0.8 min
+    public level 11: 9147/9147 series, 0.8 min
+  forecast public level 11 (origin d_1913) done in 0.8 min
+    final level 10: 1500/3049 series, 0.1 min
+    final level 10: 3000/3049 series, 0.3 min
+    final level 10: 3049/3049 series, 0.3 min
+  forecast final level 10 (origin d_1941) done in 0.3 min
+    final level 11: 1500/9147 series, 0.1 min
+    final level 11: 3000/9147 series, 0.3 min
+    final level 11: 4500/9147 series, 0.4 min
+    final level 11: 6000/9147 series, 0.6 min
+    final level 11: 7500/9147 series, 0.7 min
+    final level 11: 9000/9147 series, 0.8 min
+    final level 11: 9147/9147 series, 0.9 min
+  forecast final level 11 (origin d_1941) done in 0.9 min

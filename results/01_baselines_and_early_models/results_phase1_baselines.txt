@@ -1,0 +1,30 @@
+M5 DATA AND WRMSSE PIPELINE RESULTS (Phase 1 and 2)
+Data folder: m5_data
+Bottom series: 30490 | Days: 1941
+Training window: d_1 to d_1913
+Holdout window (28 days): d_1914 to d_1941
+Weight window: last 28 training days, dollar sales (units x price)
+Overall WRMSSE = mean of the 12 level scores
+
+SANITY CHECKS
+All sanity checks passed (weights sum to 1 per level, perfect forecast = 0, 42,840 series across 12 levels).
+
+WRMSSE BY LEVEL
+Level Name                    Series           Naive   SeasonalNaive
+--------------------------------------------------------------------
+1     Total                        1          1.4879          0.7514
+2     State                        3          1.5172          0.7544
+3     Store                       10          1.5346          0.7993
+4     Category                     3          1.5200          0.7620
+5     Department                   7          1.6055          0.8171
+6     State x Category             9          1.5405          0.7830
+7     State x Department          21          1.6143          0.8304
+8     Store x Category            30          1.5388          0.8393
+9     Store x Department          70          1.5616          0.8919
+10    Item                      3049          1.2708          1.0322
+11    Item x State              9147          1.2107          1.0750
+12    Item x Store             30490          1.1645          1.1004
+--------------------------------------------------------------------
+      OVERALL WRMSSE           42840          1.4639          0.8697
+
+Runtime: 10.4 s

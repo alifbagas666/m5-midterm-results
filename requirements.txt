@@ -1,0 +1,9 @@
+numpy
+pandas
+scipy
+lightgbm
+shap
+torch
+chronos-forecasting
+# Other foundation models (TimesFM 3.0, TiRex-2, t0, Timestral) each used their own virtual environment,
+# see src/m5_fm_forecast.py

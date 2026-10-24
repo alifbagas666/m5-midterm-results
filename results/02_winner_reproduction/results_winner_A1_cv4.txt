@@ -1,0 +1,42 @@
+WINNER'S CODE (M5 1st place, folder A1) RUN ON AN EARLIER VALIDATION FOLD (cv4)
+Trained on days up to d_1885, forecast d_1886 to d_1913 (the winner's own 'cv4' fold; target encodings rebuilt on days up to d_1885).
+Settings of the winner's models are unchanged. Compatibility patches are listed in PATCH_LOG.txt.
+Sets finished: 6 of 6 (nr_store, nr_store_cat, nr_store_dept, r_store, r_store_cat, r_store_dept). The winner averaged all six with equal weights;
+the 'average' row is the equal-weight average of the sets finished so far.
+Bias = total forecast / total actual (1.000 is unbiased).
+
+RESULTS (WRMSSE on the holdout, lower is better)
+Set                WRMSSE    Bias
+nr_store           0.5496   0.970
+nr_store_cat       0.5863   0.958
+nr_store_dept      0.6514   0.938
+r_store            0.6504   1.073
+r_store_cat        0.6083   1.051
+r_store_dept       0.5584   1.023
+average            0.5167   1.002
+
+WRMSSE BY LEVEL (first three finished sets and the average)
+Level Name                    Series   SeasonalNaive        nr_store    nr_store_cat   nr_store_dept         average
+--------------------------------------------------------------------------------------------------------------------
+1     Total                        1          0.6677          0.3321          0.4015          0.5285          0.2320
+2     State                        3          0.7245          0.3821          0.4254          0.5200          0.3286
+3     Store                       10          0.8252          0.4815          0.5039          0.5690          0.4448
+4     Category                     3          0.7543          0.3628          0.4402          0.5510          0.3181
+5     Department                   7          0.9738          0.4324          0.5066          0.6086          0.4114
+6     State x Category             9          0.8347          0.4396          0.4880          0.5622          0.4177
+7     State x Department          21          0.9844          0.5019          0.5491          0.6202          0.4858
+8     Store x Category            30          0.9205          0.5480          0.5736          0.6243          0.5254
+9     Store x Department          70          1.0290          0.6029          0.6265          0.6819          0.5842
+10    Item                      3049          1.1143          0.8337          0.8367          0.8527          0.8061
+11    Item x State              9147          1.1192          0.8419          0.8454          0.8537          0.8228
+12    Item x Store             30490          1.1259          0.8359          0.8383          0.8453          0.8239
+--------------------------------------------------------------------------------------------------------------------
+      OVERALL WRMSSE           42840          0.9228          0.5496          0.5863          0.6514          0.5167
+
+REFERENCE VALUES (published, window to be confirmed)
+  Original M5 winner (final window d_1942 to d_1969): 0.520
+  Yang et al. Kaggle Top-1 reproduction: 0.5230 | Yang et al. LightGBM + PatchTST: 0.4989
+  Our numbers on d_1914 to d_1941 (a different window): E1b L3 0.5422 | E1d non-recursive per-store port 0.6959 raw, 0.5992 calibrated
+
+STEPS: preprocessing: already done | r_store train: 119.6 min (exit 0) | r_store predict: 30.4 min (exit 0)
+Runtime of this invocation: 150.1 min

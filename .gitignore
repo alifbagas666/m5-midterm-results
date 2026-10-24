@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+inputs/
+out_*/
+data/*.csv
+data/*.zip
+*.log.tmp
+.venv*/

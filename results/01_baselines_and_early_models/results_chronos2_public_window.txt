@@ -1,0 +1,42 @@
+CHRONOS-2 ON M5 (zero-shot ablation ladder)
+Data folder: m5_data
+Device: cuda: NVIDIA GeForce RTX 3090 | model: amazon/chronos-2
+Context length: 1024 days | cross-learning tasks per batch: about 100
+Training window: d_1 to d_1913 | Holdout (28 days): d_1914 to d_1941
+Point forecast: mean implied by the quantiles (primary, fixed in advance); median also reported.
+No training on M5 was done. Whether M5 or similar retail data was in the Chronos-2 pretraining corpus
+is not checked here and should be addressed in the limitations section.
+
+LADDER (WRMSSE, lower is better; validation window is d_1886 to d_1913)
+Config                        Holdout mean  Holdout median  Validation mean    Min
+A_univariate                        0.7501          1.9437           0.7331    1.5
+B_covariates                        0.6991          1.8931           0.6921    7.6
+C_crosslearn_store_dept             0.7104          2.0210           0.7406    6.9
+C_crosslearn_store_cat              0.7093          2.0192           0.7410    7.0
+C_crosslearn_store                  0.7096          2.0199           0.7415    7.0
+C_crosslearn_item                   0.7046          2.0017           0.7065    7.3
+C_crosslearn_cat_state              0.7096          2.0199           0.7411    7.0
+
+WRMSSE BY LEVEL (holdout, mean point)
+Level Name                    Series   SeasonalNaive    A_univariate    B_covariates C_cl_store_dept  C_cl_store_cat      C_cl_store       C_cl_item  C_cl_cat_state
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1     Total                        1          0.7514          0.6663          0.5745          0.6135          0.6116          0.6122          0.5902          0.6122
+2     State                        3          0.7544          0.6776          0.5958          0.6122          0.6105          0.6111          0.6110          0.6110
+3     Store                       10          0.7993          0.7127          0.6482          0.6537          0.6529          0.6525          0.6570          0.6531
+4     Category                     3          0.7620          0.6886          0.5990          0.6380          0.6363          0.6369          0.6158          0.6369
+5     Department                   7          0.8171          0.7594          0.6878          0.7139          0.7124          0.7129          0.6919          0.7127
+6     State x Category             9          0.7830          0.7045          0.6281          0.6458          0.6442          0.6449          0.6433          0.6447
+7     State x Department          21          0.8304          0.7608          0.7013          0.7099          0.7086          0.7092          0.7061          0.7089
+8     Store x Category            30          0.8393          0.7348          0.6785          0.6859          0.6851          0.6849          0.6877          0.6852
+9     Store x Department          70          0.8919          0.7880          0.7441          0.7461          0.7456          0.7454          0.7473          0.7456
+10    Item                      3049          1.0322          0.8360          0.8440          0.8351          0.8348          0.8347          0.8336          0.8349
+11    Item x State              9147          1.0750          0.8375          0.8449          0.8353          0.8349          0.8350          0.8360          0.8352
+12    Item x Store             30490          1.1004          0.8348          0.8431          0.8353          0.8351          0.8351          0.8347          0.8352
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+      OVERALL WRMSSE           42840          0.8697          0.7501          0.6991          0.7104          0.7093          0.7096          0.7046          0.7096
+
+REFERENCE VALUES (published, window to be confirmed)
+  Original M5 winner: 0.520 | Yang et al. Top-1 reproduction: 0.5230 | Yang et al. LightGBM + PatchTST: 0.4989
+  Our E1b L3 (LightGBM, unweighted, all features): 0.5422
+
+Runtime: 45.0 min

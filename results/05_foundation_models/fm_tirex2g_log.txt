@@ -1,0 +1,11 @@
+[2026-10-17 12:38:54] model tirex2g, series 30490, days 1969, calendar days 1969
+model loaded in 0.8 min
+[2026-10-17 12:41:35] model tirex2g, series 30490, days 1969, calendar days 1969
+model loaded in 0.1 min
+  cv5 (origin d_1801) done in 1.4 min | saved as fm_tirex2g_cv5.npy | level 1 forecast total / previous 28 days actual 1.049
+  cv2 (origin d_1829) done in 1.2 min | saved as fm_tirex2g_cv2.npy | level 1 forecast total / previous 28 days actual 1.017
+  cv3 (origin d_1857) done in 1.2 min | saved as fm_tirex2g_cv3.npy | level 1 forecast total / previous 28 days actual 1.014
+  cv4 (origin d_1885) done in 1.3 min | saved as fm_tirex2g_cv4.npy | level 1 forecast total / previous 28 days actual 1.001
+  public (origin d_1913) done in 1.2 min | saved as fm_tirex2g_public.npy | level 1 forecast total / previous 28 days actual 0.991
+  final (origin d_1941) done in 1.3 min | saved as fm_tirex2g_final.npy | level 1 forecast total / previous 28 days actual 1.020
+done

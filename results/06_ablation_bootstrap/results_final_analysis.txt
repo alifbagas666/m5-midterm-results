@@ -1,0 +1,90 @@
+ABLATION, UNCERTAINTY AND SECONDARY OUTCOMES FOR THE BLEND (winner + direct Chronos-2 at levels 1 to 9)
+Fixed share 0.20 unless stated. WRMSSE over 12 levels, lower is better. Bootstrap: 2000 draws, circular blocks of 7 days, 4 blocks per draw (days only, rough guide).
+Days in data folder: 1969.
+Note: the bottom-up rows are also mixed at levels 1 to 9 only, so they differ slightly from the earlier all-level mix.
+
+WINDOW cv4 (forecast d_1886..d_1913)
+Variant                            WRMSSE   Change    95% interval of change  P(better)
+winner alone                       0.5167  +0.0000        [+0.0000, +0.0000]
+HEADLINE direct B mean 20%         0.5151  -0.0016        [-0.0075, +0.0030]       0.72
+direct B mean 10%                  0.5153  -0.0014        [-0.0043, +0.0010]       0.86
+direct B mean 30%                  0.5162  -0.0005        [-0.0092, +0.0062]       0.53
+direct B median 20%                0.5144  -0.0023        [-0.0078, +0.0021]       0.83
+direct A (no covariates) 20%       0.5193  +0.0026        [-0.0062, +0.0095]       0.26
+bottom-up Chronos-2 C 20%          0.5342  +0.0175        [-0.0010, +0.0299]       0.03
+bottom-up PatchTST P1 20%          0.5253  +0.0086        [+0.0004, +0.0146]       0.02
+  Winner alone WRMSSE 95% interval [0.4859, 0.5345] | headline blend [0.4799, 0.5359]
+  Level 1 bias (total forecast / total actual): winner 1.002 | headline blend 1.004
+  Level                      Winner  Headline   Change
+   1 Total                   0.2320    0.2363  +0.0043
+   2 State                   0.3286    0.3301  +0.0015
+   3 Store                   0.4448    0.4359  -0.0089
+   4 Category                0.3181    0.3205  +0.0024
+   5 Department              0.4114    0.4102  -0.0012
+   6 State x Category        0.4177    0.4158  -0.0019
+   7 State x Department      0.4858    0.4882  +0.0023
+   8 Store x Category        0.5254    0.5149  -0.0104
+   9 Store x Department      0.5842    0.5766  -0.0076
+  10 Item                    0.8061    0.8061  +0.0000
+  11 Item x State            0.8228    0.8228  +0.0000
+  12 Item x Store            0.8239    0.8239  +0.0000
+
+WINDOW public (forecast d_1914..d_1941)
+Variant                            WRMSSE   Change    95% interval of change  P(better)
+winner alone                       0.6415  +0.0000        [+0.0000, +0.0000]
+HEADLINE direct B mean 20%         0.6245  -0.0169        [-0.0276, -0.0087]       1.00
+direct B mean 10%                  0.6321  -0.0094        [-0.0151, -0.0046]       1.00
+direct B mean 30%                  0.6189  -0.0225        [-0.0376, -0.0119]       1.00
+direct B median 20%                0.6260  -0.0155        [-0.0260, -0.0072]       1.00
+direct A (no covariates) 20%       0.6325  -0.0089        [-0.0234, +0.0024]       0.92
+bottom-up Chronos-2 C 20%          0.6302  -0.0113        [-0.0282, +0.0048]       0.92
+bottom-up PatchTST P1 20%          0.6424  +0.0009        [-0.0220, +0.0224]       0.48
+  Winner alone WRMSSE 95% interval [0.5963, 0.6779] | headline blend [0.5731, 0.6675]
+  Level 1 bias (total forecast / total actual): winner 0.933 | headline blend 0.940
+  Level                      Winner  Headline   Change
+   1 Total                   0.5513    0.5118  -0.0395
+   2 State                   0.5517    0.5211  -0.0306
+   3 Store                   0.5845    0.5608  -0.0237
+   4 Category                0.5521    0.5301  -0.0220
+   5 Department              0.5654    0.5448  -0.0206
+   6 State x Category        0.5664    0.5458  -0.0206
+   7 State x Department      0.5907    0.5748  -0.0159
+   8 Store x Category        0.6092    0.5919  -0.0172
+   9 Store x Department      0.6513    0.6383  -0.0131
+  10 Item                    0.8230    0.8230  +0.0000
+  11 Item x State            0.8261    0.8261  +0.0000
+  12 Item x Store            0.8260    0.8260  +0.0000
+
+WINDOW final (forecast d_1942..d_1969)
+Variant                            WRMSSE   Change    95% interval of change  P(better)
+winner alone                       0.5228  +0.0000        [+0.0000, +0.0000]
+HEADLINE direct B mean 20%         0.5195  -0.0033        [-0.0132, +0.0061]       0.73
+direct B mean 10%                  0.5199  -0.0029        [-0.0083, +0.0021]       0.85
+direct B mean 30%                  0.5215  -0.0013        [-0.0147, +0.0121]       0.58
+direct B median 20%                0.5194  -0.0034        [-0.0129, +0.0059]       0.75
+direct A (no covariates) 20%       0.5252  +0.0023        [-0.0071, +0.0100]       0.28
+bottom-up Chronos-2 C 20%          0.5133  -0.0096        [-0.0224, +0.0014]       0.95
+bottom-up PatchTST P1 20%          0.5174  -0.0055        [-0.0138, +0.0036]       0.89
+  Winner alone WRMSSE 95% interval [0.4912, 0.5439] | headline blend [0.4825, 0.5469]
+  Share of draws where the headline blend is below the official 0.5204: 0.61 (the official score comes from a different run of the winner's code, so this is a rough reference)
+  Share of draws where the winner alone is below the official 0.5204: 0.53
+  Level 1 bias (total forecast / total actual): winner 1.003 | headline blend 1.008
+  Level                      Winner  Headline   Change
+   1 Total                   0.2006    0.2009  +0.0003
+   2 State                   0.3118    0.3153  +0.0035
+   3 Store                   0.3994    0.3958  -0.0036
+   4 Category                0.2839    0.2693  -0.0146
+   5 Department              0.3720    0.3576  -0.0144
+   6 State x Category        0.3948    0.3944  -0.0004
+   7 State x Department      0.4782    0.4743  -0.0038
+   8 Store x Category        0.4816    0.4789  -0.0028
+   9 Store x Department      0.5737    0.5695  -0.0042
+  10 Item                    0.9653    0.9653  +0.0000
+  11 Item x State            0.9287    0.9287  +0.0000
+  12 Item x Store            0.8841    0.8841  +0.0000
+
+STABILITY ACROSS WINDOWS (headline blend minus winner alone, WRMSSE; negative is better)
+  cv4      winner 0.5167 | blend 0.5151 | change -0.0016
+  public   winner 0.6415 | blend 0.6245 | change -0.0169
+  final    winner 0.5228 | blend 0.5195 | change -0.0033
+  Windows improved: 3 of 3. Worst-case change: -0.0016.
